@@ -1,0 +1,36 @@
+Problem no. 78-
+class Solution:
+    def subsets(self, nums):
+        result = []
+
+        def backtrack(start, current):
+            result.append(current.copy())
+
+            for i in range(start, len(nums)):
+                current.append(nums[i])
+                backtrack(i + 1, current)
+                current.pop()
+
+        backtrack(0, [])
+        return result
+
+Problem no. 39-
+class Solution:
+    def combinationSum(self, candidates, target):
+        result = []
+
+        def backtrack(start, current, total):
+            if total == target:
+                result.append(current.copy())
+                return
+
+            if total > target:
+                return
+
+            for i in range(start, len(candidates)):
+                current.append(candidates[i])
+                backtrack(i, current, total + candidates[i])
+                current.pop()
+
+        backtrack(0, [], 0)
+        return result
