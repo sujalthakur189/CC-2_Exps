@@ -1,0 +1,33 @@
+Problem no. 287
+class Solution:
+    def findDuplicate(self, nums):
+        slow = nums[0]
+        fast = nums[0]
+
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+
+            if slow == fast:
+                break
+
+        slow = nums[0]
+
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+
+        return slow
+Problem no. 258
+class Solution:
+    def addDigits(self, num):
+        while num >= 10:
+            total = 0
+
+            while num > 0:
+                total += num % 10
+                num //= 10
+
+            num = total
+
+        return num
